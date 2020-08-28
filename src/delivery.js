@@ -16,15 +16,7 @@ function calculateRegularDeliveryTime(anOrder) {
 
 function rushDeliveryDate(anOrder) {
   let deliveryTime;
-  if (isIncludesDeliveryState(['MA', 'CT'], anOrder)) {
-    deliveryTime = 1;
-  }
-  else if (isIncludesDeliveryState(['NY', 'NH'], anOrder)) {
-    deliveryTime = 2;
-  }
-  else {
-    deliveryTime = 3;
-  }
+  deliveryTime = isIncludesDeliveryState(['MA', 'CT'], anOrder) ? 1 : isIncludesDeliveryState(['NY', 'NH'], anOrder) ? 2 : 3;
   return anOrder.placedOn.plusDays(1 + deliveryTime);
 }
 
