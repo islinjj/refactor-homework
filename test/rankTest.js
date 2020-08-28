@@ -1,12 +1,26 @@
 const rankTest = require('ava');
-const { rating } = require('../src/rank');
+const { rating,voyageProfitFactor,voyageRisk,captainHistoryRisk } = require('../src/rank');
 
-rankTest('should return 2 when rating given empty history and empty voyage', t => {
+rankTest('should return 2 when voyageProfitFactor given empty history and empty voyage', t => {
   //given
   let history = [];
   let voyage = {};
   //when
-  let result = rating(voyage, history);
+  let result = voyageProfitFactor(voyage, history);
   //then
-  t.is('B', result);
+  t.is(2, result);
 });
+rankTest('should return 2 when voyageProfitFactor given empty voyage and history has china',t => {
+  //given
+  let voyage = {};
+  let history = [
+    {
+      zone: 'china',
+      profit: -2,
+    }
+  ];
+  //when
+  let result = voyageProfitFactor(voyage, history);
+  //then
+  t.is(2, result);
+})
