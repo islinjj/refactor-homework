@@ -77,3 +77,18 @@ deliveryTest('should return 5 when deliveryDate given rush is false and me', t =
     //then
     t.is(result, 5);
 });
+deliveryTest('should return 5 when deliveryDate given rush is false and mq', t => {
+    //given
+    let isRush = false;
+    let anOrder = {
+        deliveryState: 'Mq', placedOn: {
+            plusDays: (x) => {
+                return x
+            }
+        }
+    }
+    //when
+    const result = deliveryDate(anOrder, isRush);
+    //then
+    t.is(result, 6);
+});
