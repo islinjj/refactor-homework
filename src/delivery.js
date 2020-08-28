@@ -8,15 +8,7 @@ function deliveryDate(anOrder, isRush) {
 }
 function regularDeliveryDate(anOrder) {
   let deliveryTime;
-  if (isIncludesDeliveryState(['MA', 'CT', 'NY',], anOrder)) {
-    deliveryTime = 2;
-  }
-  else if (isIncludesDeliveryState(['ME', 'NH'], anOrder)) {
-    deliveryTime = 3;
-  }
-  else {
-    deliveryTime = 4;
-  }
+  deliveryTime =  isIncludesDeliveryState(['MA', 'CT', 'NY',], anOrder) ? 2 : isIncludesDeliveryState(['ME', 'NH'], anOrder) ? 3 : 4;
   return anOrder.placedOn.plusDays(2 + deliveryTime);
 }
 
