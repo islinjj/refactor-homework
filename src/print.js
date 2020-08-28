@@ -1,13 +1,10 @@
 function printOwing(invoice) {
   let result = `***********************\n**** Customer Owes ****\n***********************\n`
-  let outstanding = calculateOutstanding(invoice);
+  const outstanding = calculateOutstanding(invoice);
   recordDueDate(invoice);
   return getResult(result, invoice, outstanding);
 }
 
-module.exports = {
-  printOwing
-}
 function calculateOutstanding(invoice) {
   let outstanding = 0;
   for (const o of invoice.borderSpacing) {
@@ -28,3 +25,6 @@ function getResult(result, invoice, outstanding) {
   return result;
 }
 
+module.exports = {
+  printOwing
+}
