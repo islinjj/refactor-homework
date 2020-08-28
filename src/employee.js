@@ -1,25 +1,30 @@
 class Employee {
-  constructor (name, type) {
+  constructor(name, type) {
     this.validateType(type);
     this._name = name;
     this._type = type;
   }
 
-  validateType (type) {
-    if (![
-      'engineer',
-      'manager',
-      'salesman',
-    ].includes(type)) {
+  validateType(type) {
+    if (!isIncludesType(type)) {
       throw new Error(`Employee cannot be of type ${type}`);
     }
   }
 
-  toString () {
+  toString() {
     return `${this._name} (${this._type})`;
   }
 }
 
-module.exports={
+function isIncludesType(type) {
+  return [
+    'engineer',
+    'manager',
+    'salesman',
+  ].includes(type);
+}
+
+module.exports = {
   Employee
 }
+
