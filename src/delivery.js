@@ -1,4 +1,4 @@
-function deliveryDate (anOrder, isRush) {
+function deliveryDate(anOrder, isRush) {
   if (isRush) {
     let deliveryTime;
     if ([
@@ -38,4 +38,8 @@ function deliveryDate (anOrder, isRush) {
     }
     return anOrder.placedOn.plusDays(2 + deliveryTime);
   }
+}
+
+module.exports={
+  deliveryDate
 }
