@@ -716,3 +716,27 @@ rankTest('should return A when rating given (vpf * 3 > (vr + chr * 2)', t => {
   const myRating = rating(voyage, history);
   t.is('A', myRating)
 });
+rankTest('should return B when rating given (vpf * 3 < (vr + chr * 2))', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+  ];
+  const myRating = rating(voyage, history);
+  t.is('B', myRating)
+});
