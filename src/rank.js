@@ -59,19 +59,26 @@ function calculateChinaProfit(history, voyage) {
   return result;
 }
 
+function isProfitHigherThenRisk(data) {
+  return data.profit * 3 > (data.risk + data.historyRisk * 2);
+}
+
+function initData(voyage, history) {
+  return {
+    profit: voyageProfitFactor(voyage, history),
+    risk: voyageRisk(voyage),
+    historyRisk: captainHistoryRisk(voyage, history)
+  }
+}
+
 function rating(voyage, history) {
-  const { profit, risk, historyRisk } = initData(voyage, history);
-  if (isProfitHigherThenRisk(profit, risk, historyRisk)) {
-    return 'A';
-  }
-  else {
-    return 'B';
-  }
+  return isProfitHigherThenRisk(initData(voyage, history)) ? 'A' : 'B';
 }
 
 module.exports = {
   rating, voyageProfitFactor, voyageRisk, captainHistoryRisk
 };
+
 
 const voyage = {
   zone: 'west-indies',
@@ -93,18 +100,6 @@ const history = [
     profit: 7,
   },
 ];
-
-function isprofit(profit, risk, historyRisk) {
-  return profit * 3 > (risk + historyRisk * 2);
-}
-
-function initData(voyage, history) {
-  return {
-    profit: voyageProfitFactor(voyage, history),
-    risk: voyageRisk(voyage),
-    historyRisk: captainHistoryRisk(voyage, history)
-  }
-}
 
 const myRating = rating(voyage, history);
 console.log(`myRating: ${myRating}`);
