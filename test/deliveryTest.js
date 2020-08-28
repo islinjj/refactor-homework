@@ -77,7 +77,7 @@ deliveryTest('should return 5 when deliveryDate given rush is false and me', t =
     //then
     t.is(result, 5);
 });
-deliveryTest('should return 5 when deliveryDate given rush is false and mq', t => {
+deliveryTest('', t => {
     //given
     let isRush = false;
     let anOrder = {

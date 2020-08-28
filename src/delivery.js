@@ -19,8 +19,7 @@ function rushDeliveryDate(anOrder) {
 }
 
 function calculateRushDeliveryDate(deliveryTime, anOrder) {
-  deliveryTime = isIncludesDeliveryState(['MA', 'CT'], anOrder) ? 1 : isIncludesDeliveryState(['NY', 'NH'], anOrder) ? 2 : 3;
-  return deliveryTime;
+  return isIncludesDeliveryState(['MA', 'CT'], anOrder) ? 1 : isIncludesDeliveryState(['NY', 'NH'], anOrder) ? 2 : 3;
 }
 
 function isIncludesDeliveryState(states, anOrder) {
