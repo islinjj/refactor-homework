@@ -1,10 +1,12 @@
 const rankTest = require('ava');
+const { rating } = require('../src/rank');
 
-rankTest('foo', t => {
-  t.pass();
-});
-
-rankTest('bar', async t => {
-  const bar = Promise.resolve('bar');
-  t.is(await bar, 'bar');
+rankTest('should return 2 when rating given empty history and empty voyage', t => {
+  //given
+  let history = [];
+  let voyage = {};
+  //when
+  let result = rating(voyage, history);
+  //then
+  t.is('B', result);
 });
