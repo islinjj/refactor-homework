@@ -61,7 +61,7 @@ function calculateChinaProfit(history, voyage) {
 
 function rating(voyage, history) {
   const { profit, risk, historyRisk } = initData(voyage, history);
-  if (profit * 3 > (risk + historyRisk * 2)) {
+  if (isProfitHigherThenRisk(profit, risk, historyRisk)) {
     return 'A';
   }
   else {
@@ -93,6 +93,10 @@ const history = [
     profit: 7,
   },
 ];
+
+function isprofit(profit, risk, historyRisk) {
+  return profit * 3 > (risk + historyRisk * 2);
+}
 
 function initData(voyage, history) {
   return {
