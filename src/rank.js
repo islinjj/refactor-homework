@@ -36,12 +36,7 @@ function voyageProfitFactor(voyage, history) {
   if (voyage.zone === 'china' || voyage.zone === 'east-indies') {
     result += 1;
   }
-  if (isHasChina(voyage, history)) {
-    result += calculateChinaProfit(history, voyage);
-  }
-  else {
-    result += calculateNoChinaProfit(history, voyage);
-  }
+  result += isHasChina(voyage, history) ? calculateChinaProfit(history, voyage) : calculateNoChinaProfit(history, voyage);
   return result;
 }
 
