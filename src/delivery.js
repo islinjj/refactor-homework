@@ -1,10 +1,5 @@
 function deliveryDate(anOrder, isRush) {
-  if (isRush) {
-    return rushDeliveryDate(anOrder);
-  }
-  else {
-    return regularDeliveryDate(anOrder);
-  }
+  return isRush ? rushDeliveryDate(anOrder) : regularDeliveryDate(anOrder);
 }
 function regularDeliveryDate(anOrder) {
   return anOrder.placedOn.plusDays(2 + calculateRegularDeliveryTime(anOrder));
@@ -15,10 +10,10 @@ function calculateRegularDeliveryTime(anOrder) {
 }
 
 function rushDeliveryDate(anOrder) {
-  return anOrder.placedOn.plusDays(1 + calculateRushDeliveryDate(deliveryTime, anOrder));
+  return anOrder.placedOn.plusDays(1 + calculateRushDeliveryDate(anOrder));
 }
 
-function calculateRushDeliveryDate(deliveryTime, anOrder) {
+function calculateRushDeliveryDate(anOrder) {
   return isIncludesDeliveryState(['MA', 'CT'], anOrder) ? 1 : isIncludesDeliveryState(['NY', 'NH'], anOrder) ? 2 : 3;
 }
 
