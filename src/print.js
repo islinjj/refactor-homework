@@ -12,12 +12,16 @@ function printOwing(invoice) {
   invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 
   // print details
-  result += `name: ${invoice.customer}\n`
-    result += `amount: ${outstanding}\n`
-    result += `amount: ${invoice.dueDate.toLocaleDateString()}`
-    return result
+  return getResult(result, invoice, outstanding);
 }
 
 module.exports = {
   printOwing
 }
+function getResult(result, invoice, outstanding) {
+  result += `name: ${invoice.customer}\n`;
+  result += `amount: ${outstanding}\n`;
+  result += `amount: ${invoice.dueDate.toLocaleDateString()}`;
+  return result;
+}
+
