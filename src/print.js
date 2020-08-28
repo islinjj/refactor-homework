@@ -1,8 +1,12 @@
 function printOwing(invoice) {
-  let result = `***********************\n**** Customer Owes ****\n***********************\n`
+  let result = initResult();
   const outstanding = calculateOutstanding(invoice);
   recordDueDate(invoice);
   return getResult(result, invoice, outstanding);
+}
+
+function initResult() {
+  return `***********************\n**** Customer Owes ****\n***********************\n`;
 }
 
 function calculateOutstanding(invoice) {
