@@ -7,9 +7,11 @@ function deliveryDate(anOrder, isRush) {
   }
 }
 function regularDeliveryDate(anOrder) {
-  let deliveryTime;
-  deliveryTime =  isIncludesDeliveryState(['MA', 'CT', 'NY',], anOrder) ? 2 : isIncludesDeliveryState(['ME', 'NH'], anOrder) ? 3 : 4;
-  return anOrder.placedOn.plusDays(2 + deliveryTime);
+  return anOrder.placedOn.plusDays(2 + calculateRegularDeliveryTime(anOrder));
+}
+
+function calculateRegularDeliveryTime(anOrder) {
+  return isIncludesDeliveryState(['MA', 'CT', 'NY',], anOrder) ? 2 : isIncludesDeliveryState(['ME', 'NH'], anOrder) ? 3 : 4;
 }
 
 function rushDeliveryDate(anOrder) {
