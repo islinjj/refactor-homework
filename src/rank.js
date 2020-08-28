@@ -1,11 +1,6 @@
 function voyageRisk(voyage) {
   let result = 1;
-  if (voyage.length > 4) {
-    result += 2;
-  }
-  if (voyage.length > 8) {
-    result += voyage.length - 8;
-  }
+  result += voyage.length > 4 ? (voyage.length > 8 ? voyage.length - 6 : 2) : 0;
   if ([
     'china',
     'east-indies',
