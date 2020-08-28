@@ -672,3 +672,47 @@ rankTest('should return 0 when calculate captainHistoryRisk given voyage zone is
   //then
   t.is(0, result)
 });
+rankTest('should return A when rating given (vpf * 3 > (vr + chr * 2)', t => {
+  const voyage = {
+    zone: 'china',
+    length: 2,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+  ];
+  const myRating = rating(voyage, history);
+  t.is('A', myRating)
+});
