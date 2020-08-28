@@ -412,3 +412,14 @@ rankTest('should return 2 when calculate voyageProfitFactor given voyage zone is
   //then
   t.is(2, result)
 });
+rankTest('should return 1 when calculate voyageRisk given voyage length < 4 and voyage zone not in specific zones', t => {
+  //given
+  const voyage = {
+    zone: 'west-indies',
+    length: 1,
+  };
+ //when
+  const result = voyageRisk(voyage);
+  //then
+  t.is(1, result)
+});
