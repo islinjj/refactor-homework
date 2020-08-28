@@ -35,4 +35,16 @@ rankTest('should return 3 when voyageProfitFactor given voyage has china and emp
   let result = voyageProfitFactor(voyage, history);
   //then
   t.is(3, result);
-})
+});
+rankTest('should return 3 when voyageProfitFactor given voyage has china and empty history', t => {
+  //given
+  let voyage = {
+    zone: 'east-indies',
+    length: 10,
+  };
+  let history = [];
+  //when
+  let result = voyageProfitFactor(voyage, history);
+  //then
+  t.is(3, result);
+});
