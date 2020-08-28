@@ -8,17 +8,10 @@ function deliveryDate(anOrder, isRush) {
 }
 function regularDeliveryDate(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-    'NY',
-  ].includes(anOrder.deliveryState)) {
+  if (isIncludesDeliveryState(['MA', 'CT', 'NY',], anOrder)) {
     deliveryTime = 2;
   }
-  else if ([
-    'ME',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+  else if (isIncludesDeliveryState(['ME', 'NH'], anOrder)) {
     deliveryTime = 3;
   }
   else {
@@ -29,22 +22,20 @@ function regularDeliveryDate(anOrder) {
 
 function rushDeliveryDate(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-  ].includes(anOrder.deliveryState)) {
+  if (isIncludesDeliveryState(['MA', 'CT'], anOrder)) {
     deliveryTime = 1;
   }
-  else if ([
-    'NY',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+  else if (isIncludesDeliveryState(['NY', 'NH'], anOrder)) {
     deliveryTime = 2;
   }
   else {
     deliveryTime = 3;
   }
   return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function isIncludesDeliveryState(states, anOrder) {
+  return states.includes(anOrder.deliveryState)
 }
 
 module.exports = {
