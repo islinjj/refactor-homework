@@ -15,9 +15,12 @@ function calculateRegularDeliveryTime(anOrder) {
 }
 
 function rushDeliveryDate(anOrder) {
-  let deliveryTime;
+  return anOrder.placedOn.plusDays(1 + calculateRushDeliveryDate(deliveryTime, anOrder));
+}
+
+function calculateRushDeliveryDate(deliveryTime, anOrder) {
   deliveryTime = isIncludesDeliveryState(['MA', 'CT'], anOrder) ? 1 : isIncludesDeliveryState(['NY', 'NH'], anOrder) ? 2 : 3;
-  return anOrder.placedOn.plusDays(1 + deliveryTime);
+  return deliveryTime;
 }
 
 function isIncludesDeliveryState(states, anOrder) {
