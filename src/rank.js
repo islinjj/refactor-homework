@@ -40,12 +40,18 @@ function voyageProfitFactor(voyage, history) {
     result += calculateChinaProfit(history, voyage);
   }
   else {
-    if (history.length > 8) {
-      result += 1;
-    }
-    if (voyage.length > 14) {
-      result -= 1;
-    }
+    result += calculateNoChinaProfit(history, voyage);
+  }
+  return result;
+}
+
+function calculateNoChinaProfit(history, voyage) {
+  let result = 0;
+  if (history.length > 8) {
+    result += 1;
+  }
+  if (voyage.length > 14) {
+    result -= 1;
   }
   return result;
 }
